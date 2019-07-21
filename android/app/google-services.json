@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "422266920477",
+    "firebase_url": "https://arvisual-ebcc4.firebaseio.com",
+    "project_id": "arvisual-ebcc4",
+    "storage_bucket": "arvisual-ebcc4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422266920477:android:282a6894060b506f",
+        "android_client_info": {
+          "package_name": "sparc.view"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422266920477-i66795nmapf3ae7p13spacffv7s79ivr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYc6BpiOgDZwVy0DdnwdAWsAlee5CZNwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422266920477-i66795nmapf3ae7p13spacffv7s79ivr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
