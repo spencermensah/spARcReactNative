@@ -9,36 +9,44 @@ import {
   Image,
   Dimensions,
   ViroFlexView,
-  ViroImage
+  ViroImage,
+  ActivityIndicator
 } from 'react-native';
 
-import {createAppContainer, createSwitchNavigator} from 'react-navigation'
+// import firebase from 'firebase'
 
-import LoginScreen from './screens/LoginScreen'
-import LoadingScreen from './screens/LoadingScreen'
-import DashboardScreen from './screens/DashboardScreen'
+export default class LoadingScreen extends Component {
 
-// import * as firebase from 'firebase'
-// import {firebaseConfig} from './config'
-// firebase.initializeApp(firebaseConfig)
+  componentDidMount(){
+    // this.checkifLoggedIn()
+  }
 
-export default class App extends Component {
+  // checkifLoggedIn = () => {
+  //   firebase.auth().onAuthStateChanged(function(user){
+  //     if(user){
+  //       this.props.navigation.navigate('DashboardScreen')
+  //     }
+  //     else{
+  //       this.props.navigation.navigate('LoginScreen')
+  //     }
+  //   })
+  // }
 
   render() {
     return(
-      <AppNavigator/>
+      <View style={localStyles.outer} >
+        <View style={localStyles.inner} >
+
+          <Text style={localStyles.titleText}>
+            Welcome to Pieces*
+          </Text>
+          
+        </View>
+      </View>
     )
   }
 
 }
-
-const AppSwitchNavigator = createSwitchNavigator({
-  LoadingScreen: LoadingScreen,
-  LoginScreen: LoginScreen,
-  DashboardScreen: DashboardScreen
-})
-
-const AppNavigator = createAppContainer(AppSwitchNavigator)
 
 var localStyles = StyleSheet.create({
   crosshair: {
@@ -97,4 +105,4 @@ var localStyles = StyleSheet.create({
 });
 
 
-module.exports = App
+module.exports = LoadingScreen
