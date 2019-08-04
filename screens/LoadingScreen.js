@@ -13,34 +13,32 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-// import firebase from 'firebase'
+import firebase from 'firebase'
 
 export default class LoadingScreen extends Component {
 
   componentDidMount(){
-    // this.checkifLoggedIn()
+     this.checkifLoggedIn()
   }
 
-  // checkifLoggedIn = () => {
-  //   firebase.auth().onAuthStateChanged(function(user){
-  //     if(user){
-  //       this.props.navigation.navigate('DashboardScreen')
-  //     }
-  //     else{
-  //       this.props.navigation.navigate('LoginScreen')
-  //     }
-  //   })
-  // }
+  checkifLoggedIn = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        this.props.navigation.navigate('DashboardScreen')
+      }
+      else{
+        this.props.navigation.navigate('LoginScreen')
+      }
+    })
+  }
 
   render() {
     return(
       <View style={localStyles.outer} >
         <View style={localStyles.inner} >
 
-          <Text style={localStyles.titleText}>
-            Welcome to Pieces*
-          </Text>
-          
+          <ActivityIndicator size="large" />
+
         </View>
       </View>
     )
@@ -60,6 +58,7 @@ var localStyles = StyleSheet.create({
     flex : 1,
     flexDirection: 'row',
     alignItems:'center',
+    backgroundColor: '#fff'
   },
   inner: {
     flex : 1,
@@ -69,7 +68,7 @@ var localStyles = StyleSheet.create({
   titleText: {
     paddingTop: 30,
     paddingBottom: 20,
-    color:'#fff',
+    color:'#000000',
     textAlign:'center',
     fontSize : 25
   },

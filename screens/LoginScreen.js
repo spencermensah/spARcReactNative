@@ -9,16 +9,77 @@ import {
   Image,
   Dimensions,
   ViroFlexView,
-  ViroImage
+  ViroImage,
+  Button,
+  Keyboard
 } from 'react-native';
+
+import {Sae} from "react-native-textinput-effects";
 
 
 export default class LoginScreen extends Component {
+  constructor(props) {
+      super(props);
+
+      this.state = {
+          email: "",
+          password: "",
+          response: ""
+      };
+
+      this.signup = this.signup.bind(this);
+      this.login = this.login.bind(this);
+  }
+
+  async signup() {
+    Keyboard.dismiss();
+    try {
+        await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+
+        this.setState({
+            response: "account created"
+        });
+
+        setTimeout(() => {
+            this.props.navigation.navigate('DashboardScreen')
+        }, 1500);
+
+    } catch (error) {
+        this.setState({
+            response: error.toString()
+        })
+    }
+
+}
+
+async login() {
+    Keyboard.dismiss();
+    try {
+        await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
+
+        this.setState({
+            response: "Logged In!"
+        });
+
+        setTimeout(() => {
+            this.props.navigation.navigate('DashboardScreen')
+        }, 1500);
+
+    } catch (error) {
+        this.setState({
+            response: error.toString()
+        })
+    }
+
+}
 
   render() {
     return(
-      <View>
-        <Text style={localStyles.titleText}> LoginScreen </Text>
+      <View style={localStyles.outer}>
+        <View style={localStyles.inner} >
+          <Text>Firebase Sample</Text>
+          <Button title="sign in with google" onPress={()=>alert("button presses")}></Button>
+        </View>
       </View>
     )
   }
@@ -37,6 +98,7 @@ var localStyles = StyleSheet.create({
     flex : 1,
     flexDirection: 'row',
     alignItems:'center',
+    backgroundColor: '#fff'
   },
   inner: {
     flex : 1,
